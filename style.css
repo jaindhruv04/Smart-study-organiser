@@ -3,10 +3,7 @@ body {
   font-family: "Roboto", sans-serif;
   position: relative;
   overflow-x: hidden;
-  background: url('https://variety.com/wp-content/uploads/2024/08/Squid-Game-Unleashed-video-game.jpeg') no-repeat center center/cover, 
-              rgba(71, 219, 172, 0.5);
-  background-size: cover;
-  background-attachment: fixed;
+  background: rgba(71, 219, 172, 0.5) url('https://variety.com/wp-content/uploads/2024/08/Squid-Game-Unleashed-video-game.jpeg') no-repeat fixed center center;
   padding-bottom: 2cm; /* Add 2 cm of white space at the bottom */
   box-sizing: border-box;
 }
