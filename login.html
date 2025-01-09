@@ -16,7 +16,7 @@
             overflow: hidden;
         }
 
-        /* Background with Squid Game image and fade effect */
+        /* Background with Squid Game image and more fade effect */
         .background {
             position: absolute;
             top: 0;
@@ -26,7 +26,7 @@
             background: url('https://blooloop.com/wp-content/uploads/2023/10/Squid-Game-The-Trials.jpg') no-repeat center center fixed;
             background-size: cover;
             z-index: -1;
-            filter: brightness(50%); /* Darkens the background */
+            filter: brightness(30%); /* More faded effect */
         }
 
         /* Squid Notes Title in top-left corner with Light Sky Blue color */
@@ -55,7 +55,8 @@
             margin-bottom: 20px;
         }
 
-        .login-container input {
+        .login-container input,
+        .login-container select {
             width: 100%;
             padding: 12px;
             margin: 10px 0;
@@ -98,7 +99,7 @@
 </head>
 <body>
 
-    <!-- Background with Squid Game image and fade effect -->
+    <!-- Background with Squid Game image and more fade effect -->
     <div class="background"></div>
 
     <!-- Squid Notes Title in top-left corner with Light Sky Blue color -->
@@ -107,8 +108,33 @@
     <div class="login-container">
         <h1>Login</h1>
         <form>
-            <input type="text" id="username" placeholder="Enter your Gmail ID" required>
             <input type="text" id="name" placeholder="Enter your Name" required>
+            <input type="email" id="email" placeholder="Enter your Gmail ID" required>
+            <input type="date" id="dob" placeholder="Enter your Date of Birth" required>
+            
+            <!-- Stream Dropdown -->
+            <select id="stream" required>
+                <option value="" disabled selected>Select your Stream</option>
+                <option value="science">Science</option>
+                <option value="commerce">Commerce</option>
+                <option value="humanities">Humanities</option>
+            </select>
+            
+            <!-- Class Dropdown with options from 6th to Postgraduate -->
+            <select id="class" required>
+                <option value="" disabled selected>Select your Class</option>
+                <option value="6th">6th</option>
+                <option value="7th">7th</option>
+                <option value="8th">8th</option>
+                <option value="9th">9th</option>
+                <option value="10th">10th</option>
+                <option value="11th">11th</option>
+                <option value="12th">12th</option>
+                <option value="undergraduate">Undergraduate</option>
+                <option value="postgraduate">Postgraduate</option>
+            </select>
+            
+            <input type="password" id="password" placeholder="Enter your Password" required>
             <button type="submit">Login</button>
         </form>
         <div class="signup-link">
