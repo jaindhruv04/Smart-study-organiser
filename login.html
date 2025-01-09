@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa; /* Light teal background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* "Squid Notes" Title */
+        .title {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 32px;
+            font-weight: bold;
+            color: #006400; /* Dark emerald green */
+        }
+
+        .login-container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            position: relative;
+            z-index: 2; /* Keep the login form above the background images */
+        }
+
+        h2 {
+            text-align: center;
+            color: #00796b; /* Teal blue color */
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 16px;
+            color: #00796b; /* Teal blue color */
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #00796b;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #00796b;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #004d40; /* Darker teal on focus */
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #00796b; /* Teal blue color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #004d40; /* Darker teal on hover */
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        /* Floating Images */
+        .floating-image {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background-size: cover;
+            animation: floatAnimation 8s infinite linear;
+        }
+
+        /* Animation for Floating Images */
+        @keyframes floatAnimation {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-30px) rotate(180deg);
+            }
+            100% {
+                transform: translateY(0) rotate(360deg);
+            }
+        }
+
+        /* Random Floating Text */
+        .random-text {
+            font-size: 24px;
+            color: #00796b;
+            animation: floatText 12s infinite ease-in-out;
+            position: absolute;
+        }
+
+        /* Animation for Random Text */
+        @keyframes floatText {
+            0% {
+                transform: translateX(0) rotate(0deg);
+            }
+            50% {
+                transform: translateX(20px) rotate(180deg);
+            }
+            100% {
+                transform: translateX(0) rotate(360deg);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Squid Notes Title -->
+    <div class="title">Squid Notes</div>
+
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <label for="gmail">Gmail ID:</label>
+            <input type="email" id="gmail" name="gmail" placeholder="Enter your Gmail" required>
+
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+            <button type="submit">Login</button>
+
+            <div id="error-message" class="error-message"></div>
+        </form>
+    </div>
+
+    <!-- Floating Images (50 images) -->
+    <div class="floating-image" style="top: 10%; left: 5%; background-image: url('https://cdn-icons-png.flaticon.com/512/2245/2245475.png');"></div>
+    <div class="floating-image" style="top: 15%; right: 10%; background-image: url('https://cdn-icons-png.flaticon.com/512/2765/2765320.png');"></div>
+    <div class="floating-image" style="bottom: 20%; left: 10%; background-image: url('https://cdn-icons-png.flaticon.com/512/3380/3380849.png');"></div>
+    <div class="floating-image" style="top: 25%; left: 30%; background-image: url('https://cdn-icons-png.flaticon.com/512/112/112169.png');"></div>
+    <div class="floating-image" style="top: 40%; left: 50%; background-image: url('https://cdn-icons-png.flaticon.com/512/2765/2765365.png');"></div>
+
+    <!-- More floating images to add up to 50 -->
+    <div class="floating-image" style="top: 60%; left: 10%; background-image: url('https://cdn-icons-png.flaticon.com/512/2245/2245475.png');"></div>
+    <div class="floating-image" style="top: 45%; right: 30%; background-image: url('https://cdn-icons-png.flaticon.com/512/2765/2765320.png');"></div>
+    <div class="floating-image" style="bottom: 30%; left: 25%; background-image: url('https://cdn-icons-png.flaticon.com/512/3380/3380849.png');"></div>
+    <div class="floating-image" style="top: 80%; left: 5%; background-image: url('https://cdn-icons-png.flaticon.com/512/112/112169.png');"></div>
+    <div class="floating-image" style="bottom: 40%; left: 50%; background-image: url('https://cdn-icons-png.flaticon.com/512/2765/2765365.png');"></div>
+
+    <!-- More floating images -->
+    <div class="floating-image" style="top: 20%; right: 40%; background-image: url('https://cdn-icons-png.flaticon.com/512/3380/3380849.png');"></div>
+    <div class="floating-image" style="top: 55%; left: 35%; background-image: url('https://cdn-icons-png.flaticon.com/512/2765/2765320.png');"></div>
+    <div class="floating-image" style="top: 50%; right: 10%; background-image: url('https://cdn-icons-png.flaticon.com/512/2245/2245475.png');"></div>
+    <div class="floating-image" style="bottom: 10%; right: 15%; background-image: url('https://cdn-icons-png.flaticon.com/512/112/112169.png');"></div>
+    <div class="floating-image" style="top: 75%; left: 15%; background-image: url('https://cdn-icons-png.flaticon.com/512/3380/3380849.png');"></div>
+
+    <!-- Add more images here following the same pattern -->
+
+    <script>
+        const loginForm = document.getElementById('loginForm');
+        const errorMessage = document.getElementById('error-message');
+
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const gmail = document.getElementById('gmail').value;
+            const name = document.getElementById('name').value;
+
+            if (!gmail || !name) {
+                errorMessage.textContent = "Both fields are required.";
+            } else if (!validateEmail(gmail)) {
+                errorMessage.textContent = "Please enter a valid Gmail address.";
+            } else {
+                errorMessage.textContent = "";
+                alert(`Welcome, ${name}!`);
+                // Redirect to another page or perform other actions on successful login
+            }
+        });
+
+        function validateEmail(email) {
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+            return emailRegex.test(email);
+        }
+    </script>
+</body>
+</html>
