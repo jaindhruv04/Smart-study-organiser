@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Squid Notes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Doctor+Soos+Bold&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: #326872; /* Emerald */
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        header nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .hero-section {
+            background: url('https://via.placeholder.com/') no-repeat center center/cover;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-family: 'Doctor Soos Bold', sans-serif;
+            color: black;
+            text-transform: uppercase;
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            font-family: 'Doctor Soos Bold', sans-serif;
+            color: black;
+        }
+
+        .quote {
+            font-size: 1.5rem;
+            font-style: italic;
+            text-align: center;
+            margin: 40px auto 20px;
+            padding: 0 20px;
+        }
+
+        .features-section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .features-section h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .features-item {
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        footer {
+            background-color: #2C3E50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        footer .footer-quote {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #ddd;
+        }
+
+        /* Random Bubbles */
+        .random-bubble {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: rgba(139, 0, 0, 0.8); /* Reddish-black */
+            animation: float 8s infinite, move 12s infinite;
+            z-index: -1;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-40px); }
+        }
+
+        @keyframes move {
+            0% { left: 0; }
+            100% { left: 100%; }
+        }
+
+        .bubble-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Squid Notes</div>
+        <nav>
+            <a id="home-link">Home</a>
+            <a id="about-link">About</a>
+            <a id="features-link">Features</a>
+            <a id="contact-link">Contact</a>
+        </nav>
+    </header>
+
+    <div class="bubble-container">
+        <!-- Random Bubbles -->
+        <div class="random-bubble" style="top: 10%; animation-delay: 2s;"></div>
+        <div class="random-bubble" style="top: 15%; animation-delay: 3s;"></div>
+        <div class="random-bubble" style="top: 25%; animation-delay: 4s;"></div>
+        <div class="random-bubble" style="top: 35%; animation-delay: 1s;"></div>
+        <div class="random-bubble" style="top: 50%; animation-delay: 2s;"></div>
+        <div class="random-bubble" style="top: 60%; animation-delay: 5s;"></div>
+        <div class="random-bubble" style="top: 70%; animation-delay: 3s;"></div>
+        <div class="random-bubble" style="top: 80%; animation-delay: 4s;"></div>
+        <div class="random-bubble" style="top: 90%; animation-delay: 1s;"></div>
+        <div class="random-bubble" style="top: 40%; animation-delay: 6s;"></div>
+        <div class="random-bubble" style="top: 45%; animation-delay: 3.5s;"></div>
+    </div>
+
+    <section class="hero-section" id="home-section">
+        <h1>WELCOME TO SQUID NOTES</h1>
+        <p>Your ultimate destination for seamless note-taking and productivity.</p>
+    </section>
+
+    <p class="quote">"Change is the end result of true learning."</p>
+
+    <section class="features-section" id="features-section">
+        <h2>Our Features</h2>
+        <div class="features-grid">
+            <div class="features-item">
+                <h3>Interactive Study Materials</h3>
+                <p>Access dynamic, engaging content tailored to your needs.</p>
+            </div>
+            <div class="features-item">
+                <h3>Personalized Learning Paths</h3>
+                <p>Customize your learning journey with advanced tools.</p>
+            </div>
+            <div class="features-item">
+                <h3>Collaborative Notes</h3>
+                <p>Share and work on notes with classmates in real-time.</p>
+            </div>
+            <div class="features-item">
+                <h3>Offline Access</h3>
+                <p>Use Squid Notes anywhere, even without internet.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-quote">
+            "Squid Notes automatically syncs across all your devices so you can access your most important information anytime, anywhere. No WiFi? No problem—offline mode ensures you can continue to use Squid Notes even when the internet cuts out."
+        </div>
+    </footer>
+
+    <script>
+        // Navigation links
+        document.getElementById('home-link').onclick = function () {
+            window.location.reload();
+        };
+
+        document.getElementById('about-link').onclick = function () {
+            alert(`OUR VISION:\n\nSquid Notes originally started because our team thought carrying books around was a hassle. Textbooks are big and heavy, and you have to switch them for each class. Losing a book or notebook means losing all the data that you’ve organized on them.
+
+The purpose and dream of Squid Notes is to lighten the bags of students around the world by replacing thick and heavy paper texts with light, digital textbooks.`);
+        };
+
+        document.getElementById('contact-link').onclick = function () {
+            alert('Contact us at: squidnotes@gmail.com');
+        };
+    </script>
+<a href="about.html">About</a>
+<a href="trial.html">TRIAL</a>
+
+</body>
+</html>
