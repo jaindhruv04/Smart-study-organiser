@@ -1,0 +1,91 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background with Squid Game image and more fade effect */
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://blooloop.com/wp-content/uploads/2023/10/Squid-Game-The-Trials.jpg') no-repeat center center fixed;
+    background-size: cover;
+    z-index: -1;
+    filter: brightness(30%); /* More faded effect */
+}
+
+/* SQUID NOTES Title in top-left corner with Light Sky Blue color */
+.title {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: #87CEFA; /* Light Sky Blue */
+    font-size: 36px;
+    font-weight: bold;
+    text-transform: uppercase; /* Ensures text is in all caps */
+}
+
+.login-container {
+    background-color: rgba(0, 0, 0, 0.7); /* Dark background to make text more readable */
+    color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 300px;
+}
+
+.login-container h1 {
+    color: #006400; /* Dark Emerald Green */
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.login-container input,
+.login-container select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #fff;
+    color: #333;
+}
+
+.login-container button {
+    width: 100%;
+    padding: 12px;
+    background-color: #006400; /* Dark Emerald Green */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.login-container button:hover {
+    background-color: #004d00; /* Slightly darker green for hover */
+}
+
+.login-container .signup-link {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.login-container .signup-link a {
+    color: #006400;
+    text-decoration: none;
+}
+
+.login-container .signup-link a:hover {
+    text-decoration: underline;
+}

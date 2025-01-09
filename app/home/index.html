@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Squid Notes</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Doctor+Soos+Bold&display=swap"
+      rel="stylesheet"
+    />
+    
+  </head>
+  <body>
+    <header>
+      <div class="logo">Squid Notes</div>
+      <nav>
+        <a id="home-link">Home</a>
+        <a href="about.html" id="about-link">About</a>
+        <a id="features-link">Features</a>
+        <a id="contact-link">Contact</a>
+      </nav>
+    </header>
+
+    <div class="bubble-container">
+      <!-- Random Bubbles -->
+      <div class="random-bubble" style="top: 10%; animation-delay: 2s"></div>
+      <div class="random-bubble" style="top: 15%; animation-delay: 3s"></div>
+      <div class="random-bubble" style="top: 25%; animation-delay: 4s"></div>
+      <div class="random-bubble" style="top: 35%; animation-delay: 1s"></div>
+      <div class="random-bubble" style="top: 50%; animation-delay: 2s"></div>
+      <div class="random-bubble" style="top: 60%; animation-delay: 5s"></div>
+      <div class="random-bubble" style="top: 70%; animation-delay: 3s"></div>
+      <div class="random-bubble" style="top: 80%; animation-delay: 4s"></div>
+      <div class="random-bubble" style="top: 90%; animation-delay: 1s"></div>
+      <div class="random-bubble" style="top: 40%; animation-delay: 6s"></div>
+      <div class="random-bubble" style="top: 45%; animation-delay: 3.5s"></div>
+    </div>
+
+    <section class="hero-section" id="home-section">
+      <h1>WELCOME TO SQUID NOTES</h1>
+      <p>
+        Your ultimate destination for seamless note-taking and productivity.
+      </p>
+      <!-- Get Started Button -->
+      <a href="get-started.html" class="get-started-btn">Get Started</a>
+    </section>
+
+    <p class="quote">"Change is the end result of true learning."</p>
+
+    <section class="features-section" id="features-section">
+      <h2>Our Features</h2>
+      <div class="features-grid">
+        <div class="features-item">
+          <h3>Interactive Study Materials</h3>
+          <p>Access dynamic, engaging content tailored to your needs.</p>
+        </div>
+        <div class="features-item">
+          <h3>Personalized Learning Paths</h3>
+          <p>Customize your learning journey with advanced tools.</p>
+        </div>
+        <div class="features-item">
+          <h3>Collaborative Notes</h3>
+          <p>Share and work on notes with classmates in real-time.</p>
+        </div>
+        <div class="features-item">
+          <h3>Offline Access</h3>
+          <p>Use Squid Notes anywhere, even without internet.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-quote">
+        "Squid Notes automatically syncs across all your devices so you can
+        access your most important information anytime, anywhere. No WiFi? No
+        problem—offline mode ensures you can continue to use Squid Notes even
+        when the internet cuts out."
+      </div>
+    </footer>
+
+    <script>
+      // Navigation links
+      document.getElementById("home-link").onclick = function () {
+        window.location.reload();
+      };
+
+      document.getElementById("contact-link").onclick = function () {
+        alert("Contact us at: squidnotes@gmail.com");
+      };
+    </script>
+  </body>
+</html>

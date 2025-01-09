@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+    <!-- Background with Squid Game image and more fade effect -->
+    <div class="background"></div>
+
+    <!-- SQUID NOTES Title in top-left corner with Light Sky Blue color -->
+    <div class="title">SQUID NOTES</div>
+
+    <div class="login-container" style="display: block;">
+        <h1>SIGN UP</h1>
+        <form>
+            <input type="text" id="name" placeholder="Enter your Name" required>
+            <input type="email" id="email" placeholder="Enter your Gmail ID" required>
+            <input type="date" id="dob" placeholder="Enter your Date of Birth" required>
+            
+            <select id="stream" required>
+                <option value="" disabled selected>Select your Stream</option>
+                <option value="science">Science</option>
+                <option value="commerce">Commerce</option>
+                <option value="humanities">Humanities</option>
+            </select>
+            
+            <select id="class" required>
+                <option value="" disabled selected>Select your Class</option>
+                <option value="6th">6th</option>
+                <option value="7th">7th</option>
+                <option value="8th">8th</option>
+                <option value="9th">9th</option>
+                <option value="10th">10th</option>
+                <option value="11th">11th</option>
+                <option value="12th">12th</option>
+                <option value="undergraduate">Undergraduate</option>
+                <option value="postgraduate">Postgraduate</option>
+            </select>
+            
+            <input type="password" id="password" placeholder="Enter your Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <div class="signup-link">
+            <p>Already have an account? <a href="#">Sign in here</a></p>
+        </div>
+    </div>
+
+
+    <div class="login-container" style="display: none;">
+        <h1>SIGN IN</h1>
+        <form>
+            <input type="email" id="email" placeholder="Enter your Gmail ID" required>            
+            <input type="password" id="password" placeholder="Enter your Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <div class="signup-link">
+            <p>Dont have an account ?<a href="#">Sign Up Here</a></p>
+        </div>
+    </div>
+
+
+</body>
+</html>
+
