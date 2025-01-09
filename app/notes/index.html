@@ -1,144 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Simple Note-Taking App</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div class="sidebar">
-        <h1>Notes</h1>
-        <button id="newNoteButton">+ New Note</button>
-        <button id="savedFilesButton">Saved Files</button>
-        <div class="note-list" id="noteList"></div>
+      <h1>Notes</h1>
+      <button id="newNoteButton">+ New Note</button>
+      <button id="savedFilesButton">Saved Files</button>
+      <div class="note-list" id="noteList"></div>
     </div>
 
     <div class="main">
-        <div class="main-header">
-            <input type="text" id="noteTitle" placeholder="Title...">
-        </div>
-        <textarea id="noteContent" class="editor" placeholder="Write your note here..."></textarea>
-        <!-- Save Button -->
-        <button class="save-btn" id="saveNoteButton">Save Note</button>
+      <div class="main-header">
+        <input type="text" id="noteTitle" placeholder="Title..." />
+      </div>
+      <textarea
+        id="noteContent"
+        class="editor"
+        placeholder="Write your note here..."
+      ></textarea>
+      <!-- Save Button -->
+      <button class="save-btn" id="saveNoteButton">Save Note</button>
     </div>
 
     <!-- Saved Files Modal -->
     <div class="saved-files-modal" id="savedFilesModal">
-        <div class="modal-content">
-            <h2>Saved Notes</h2>
-            <div class="note-list" id="savedNoteList"></div>
-            <button class="close-btn" id="closeModalBtn">Close</button>
-        </div>
+      <div class="modal-content">
+        <h2>Saved Notes</h2>
+        <div class="note-list" id="savedNoteList"></div>
+        <button class="close-btn" id="closeModalBtn">Close</button>
+      </div>
     </div>
-
-    <script>
-        const noteList = document.getElementById('noteList');
-        const noteTitle = document.getElementById('noteTitle');
-        const noteContent = document.getElementById('noteContent');
-        const newNoteButton = document.getElementById('newNoteButton');
-        const savedFilesButton = document.getElementById('savedFilesButton');
-        const savedFilesModal = document.getElementById('savedFilesModal');
-        const savedNoteList = document.getElementById('savedNoteList');
-        const closeModalBtn = document.getElementById('closeModalBtn');
-        const saveNoteButton = document.getElementById('saveNoteButton');
-
-        // Load notes from localStorage or initialize empty array
-        let notes = JSON.parse(localStorage.getItem('notes')) || [];
-        let currentNoteIndex = null;
-
-        function renderNotes() {
-            noteList.innerHTML = '';
-            notes.forEach((note, index) => {
-                const noteItem = document.createElement('div');
-                noteItem.className = 'note-item';
-                noteItem.textContent = note.title || 'Untitled Note';
-
-                // Add delete button to each note item
-                const deleteButton = document.createElement('button');
-                deleteButton.className = 'delete-btn';
-                deleteButton.textContent = 'Delete';
-                deleteButton.onclick = (event) => {
-                    event.stopPropagation(); // Prevent clicking the note from opening it
-                    deleteNote(index);
-                };
-
-                noteItem.appendChild(deleteButton);
-                noteItem.onclick = () => loadNote(index);
-                noteList.appendChild(noteItem);
-            });
-        }
-
-        function loadNote(index) {
-            currentNoteIndex = index;
-            const note = notes[index];
-            noteTitle.value = note.title;
-            noteContent.value = note.content;
-        }
-
-        function saveCurrentNote() {
-            if (currentNoteIndex !== null) {
-                notes[currentNoteIndex] = {
-                    title: noteTitle.value,
-                    content: noteContent.value
-                };
-                // Save notes to localStorage
-                localStorage.setItem('notes', JSON.stringify(notes));
-            }
-        }
-
-        function deleteNote(index) {
-            notes.splice(index, 1); // Remove the note from the array
-            localStorage.setItem('notes', JSON.stringify(notes)); // Save updated list to localStorage
-            renderNotes(); // Re-render the list
-        }
-
-        // Add a new note
-        newNoteButton.onclick = () => {
-            saveCurrentNote();
-            notes.push({ title: '', content: '' });
-            currentNoteIndex = notes.length - 1;
-            loadNote(currentNoteIndex);
-            renderNotes();
-        };
-
-        // Show the saved notes modal
-        savedFilesButton.onclick = () => {
-            renderSavedFiles();
-            savedFilesModal.style.display = 'flex';
-        };
-
-        // Close the saved files modal
-        closeModalBtn.onclick = () => {
-            savedFilesModal.style.display = 'none';
-        };
-
-        // Render saved notes in the modal
-        function renderSavedFiles() {
-            savedNoteList.innerHTML = '';
-            notes.forEach((note, index) => {
-                const savedNoteItem = document.createElement('div');
-                savedNoteItem.className = 'note-item';
-                savedNoteItem.textContent = note.title || 'Untitled Note';
-                savedNoteItem.onclick = () => loadNote(index);
-                savedNoteList.appendChild(savedNoteItem);
-            });
-        }
-
-        // Save the current note when the "Save Note" button is clicked
-        saveNoteButton.onclick = () => {
-            saveCurrentNote();
-            alert('Note Saved!');
-            renderNotes(); // Re-render the list of notes after saving
-        };
-
-        // Update the notes in localStorage on input
-        noteTitle.oninput = saveCurrentNote;
-        noteContent.oninput = saveCurrentNote;
-
-        // Initial render of the notes
-        renderNotes();
-    </script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
