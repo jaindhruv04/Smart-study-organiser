@@ -16,7 +16,7 @@
 
         /* Sidebar */
         .sidebar {
-            background-color: #4A90E2;
+            background-color: #5F4B8B; /* Bluish-Purple */
             color: white;
             width: 250px;
             display: flex;
@@ -31,7 +31,7 @@
         }
 
         .sidebar button {
-            background-color: #0066cc;
+            background-color: #4B3C7D; /* Darker Bluish-Purple */
             color: white;
             border: none;
             padding: 10px;
@@ -42,7 +42,7 @@
         }
 
         .sidebar button:hover {
-            background-color: #005bb5;
+            background-color: #3A2D5F; /* Even Darker */
         }
 
         .note-list {
@@ -52,7 +52,7 @@
         }
 
         .note-item {
-            background-color: #337ab7;
+            background-color: #7E6BC8; /* Lighter Bluish-Purple */
             margin: 5px 0;
             padding: 10px;
             border-radius: 5px;
@@ -63,12 +63,12 @@
         }
 
         .note-item:hover {
-            background-color: #2a6da8;
+            background-color: #6A58A4; /* Slightly Darker */
         }
 
         /* Delete Button */
         .delete-btn {
-            background-color: red; /* Red color */
+            background-color: #8B0000; /* Dark Red */
             color: white;
             border: none;
             padding: 5px 10px;
@@ -78,7 +78,7 @@
         }
 
         .delete-btn:hover {
-            background-color: darkred; /* Darker red on hover */
+            background-color: #660000; /* Even Darker Red */
         }
 
         /* Main Content */
@@ -114,7 +114,7 @@
 
         /* Save Button */
         .save-btn {
-            background-color: #28a745; /* Green color */
+            background-color: #28a745; /* Green */
             color: white;
             padding: 8px 15px;
             border: none;
@@ -122,13 +122,13 @@
             border-radius: 5px;
             font-size: 14px;
             position: absolute;
-            top: 50px;  /* Adjusted to be below the title box */
+            top: 50px; /* Adjusted to be below the title box */
             right: 20px;
             width: 100px; /* Smaller width */
         }
 
         .save-btn:hover {
-            background-color: #218838; /* Darker green on hover */
+            background-color: #218838; /* Darker Green */
         }
 
         /* Saved Files Modal */
@@ -195,11 +195,9 @@
             <input type="text" id="noteTitle" placeholder="Title...">
         </div>
         <textarea id="noteContent" class="editor" placeholder="Write your note here..."></textarea>
-        <!-- Save Button -->
         <button class="save-btn" id="saveNoteButton">Save Note</button>
     </div>
 
-    <!-- Saved Files Modal -->
     <div class="saved-files-modal" id="savedFilesModal">
         <div class="modal-content">
             <h2>Saved Notes</h2>
@@ -219,7 +217,6 @@
         const closeModalBtn = document.getElementById('closeModalBtn');
         const saveNoteButton = document.getElementById('saveNoteButton');
 
-        // Load notes from localStorage or initialize empty array
         let notes = JSON.parse(localStorage.getItem('notes')) || [];
         let currentNoteIndex = null;
 
@@ -230,12 +227,11 @@
                 noteItem.className = 'note-item';
                 noteItem.textContent = note.title || 'Untitled Note';
 
-                // Add delete button to each note item
                 const deleteButton = document.createElement('button');
                 deleteButton.className = 'delete-btn';
                 deleteButton.textContent = 'Delete';
                 deleteButton.onclick = (event) => {
-                    event.stopPropagation(); // Prevent clicking the note from opening it
+                    event.stopPropagation();
                     deleteNote(index);
                 };
 
@@ -254,22 +250,17 @@
 
         function saveCurrentNote() {
             if (currentNoteIndex !== null) {
-                notes[currentNoteIndex] = {
-                    title: noteTitle.value,
-                    content: noteContent.value
-                };
-                // Save notes to localStorage
+                notes[currentNoteIndex] = { title: noteTitle.value, content: noteContent.value };
                 localStorage.setItem('notes', JSON.stringify(notes));
             }
         }
 
         function deleteNote(index) {
-            notes.splice(index, 1); // Remove the note from the array
-            localStorage.setItem('notes', JSON.stringify(notes)); // Save updated list to localStorage
-            renderNotes(); // Re-render the list
+            notes.splice(index, 1);
+            localStorage.setItem('notes', JSON.stringify(notes));
+            renderNotes();
         }
 
-        // Add a new note
         newNoteButton.onclick = () => {
             saveCurrentNote();
             notes.push({ title: '', content: '' });
@@ -278,18 +269,15 @@
             renderNotes();
         };
 
-        // Show the saved notes modal
         savedFilesButton.onclick = () => {
             renderSavedFiles();
             savedFilesModal.style.display = 'flex';
         };
 
-        // Close the saved files modal
         closeModalBtn.onclick = () => {
             savedFilesModal.style.display = 'none';
         };
 
-        // Render saved notes in the modal
         function renderSavedFiles() {
             savedNoteList.innerHTML = '';
             notes.forEach((note, index) => {
@@ -301,18 +289,15 @@
             });
         }
 
-        // Save the current note when the "Save Note" button is clicked
         saveNoteButton.onclick = () => {
             saveCurrentNote();
             alert('Note Saved!');
-            renderNotes(); // Re-render the list of notes after saving
+            renderNotes();
         };
 
-        // Update the notes in localStorage on input
         noteTitle.oninput = saveCurrentNote;
         noteContent.oninput = saveCurrentNote;
 
-        // Initial render of the notes
         renderNotes();
     </script>
 </body>
