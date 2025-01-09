@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Note-Taking App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background-color: #4A90E2;
+            color: white;
+            width: 250px;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .sidebar h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .sidebar button {
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            padding: 10px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .sidebar button:hover {
+            background-color: #005bb5;
+        }
+
+        .note-list {
+            margin-top: 20px;
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .note-item {
+            background-color: #337ab7;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .note-item:hover {
+            background-color: #2a6da8;
+        }
+
+        /* Main Content */
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-header {
+            background-color: #f4f4f4;
+            padding: 10px 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .main-header input {
+            width: 100%;
+            font-size: 18px;
+            border: none;
+            outline: none;
+        }
+
+        .editor {
+            flex: 1;
+            padding: 20px;
+            font-size: 16px;
+            outline: none;
+            border: none;
+            resize: none;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h1>Notes</h1>
+        <button id="newNoteButton">+ New Note</button>
+        <div class="note-list" id="noteList"></div>
+    </div>
+
+    <div class="main">
+        <div class="main-header">
+            <input type="text" id="noteTitle" placeholder="Title...">
+        </div>
+        <textarea id="noteContent" class="editor" placeholder="Write your note here..."></textarea>
+    </div>
+
+    <script>
+        const noteList = document.getElementById('noteList');
+        const noteTitle = document.getElementById('noteTitle');
+        const noteContent = document.getElementById('noteContent');
+        const newNoteButton = document.getElementById('newNoteButton');
+
+        let notes = [];
+        let currentNoteIndex = null;
+
+        function renderNotes() {
+            noteList.innerHTML = '';
+            notes.forEach((note, index) => {
+                const noteItem = document.createElement('div');
+                noteItem.className = 'note-item';
+                noteItem.textContent = note.title || 'Untitled Note';
+                noteItem.onclick = () => loadNote(index);
+                noteList.appendChild(noteItem);
+            });
+        }
+
+        function loadNote(index) {
+            currentNoteIndex = index;
+            const note = notes[index];
+            noteTitle.value = note.title;
+            noteContent.value = note.content;
+        }
+
+        function saveCurrentNote() {
+            if (currentNoteIndex !== null) {
+                notes[currentNoteIndex] = {
+                    title: noteTitle.value,
+                    content: noteContent.value
+                };
+            }
+        }
+
+        newNoteButton.onclick = () => {
+            saveCurrentNote();
+            notes.push({ title: '', content: '' });
+            currentNoteIndex = notes.length - 1;
+            loadNote(currentNoteIndex);
+            renderNotes();
+        };
+
+        noteTitle.oninput = saveCurrentNote;
+        noteContent.oninput = saveCurrentNote;
+
+        // Initial render
+        renderNotes();
+    </script>
+</body>
+</html>
