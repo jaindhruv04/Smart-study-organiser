@@ -21,7 +21,7 @@ header {
 header .logo {
     font-size: 24px;
     font-weight: 700;
-    text-transform: uppercase; /* Squid Notes in caps lock */
+    text-transform: uppercase;/
 }
 
 header nav {
@@ -41,12 +41,12 @@ header nav a {
     margin: 50px auto;
     padding: 20px;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background for better readability */
+    background-color: rgba(0, 0, 0, 0.7); 
     border-radius: 15px;
 }
 
 .about-section h1 {
-    background-color: rgba(255, 255, 255, 0.1); /* Light semi-transparent overlay */
+    background-color: rgba(255, 255, 255, 0.1); 
     color: white;
     padding: 15px;
     border-radius: 10px;
@@ -58,7 +58,7 @@ header nav a {
 }
 
 .about-section .quote-box {
-    background-color: rgba(255, 255, 255, 0.1); /* Light semi-transparent overlay */
+    background-color: rgba(255, 255, 255, 0.1); 
     border-radius: 10px;
     padding: 20px;
     margin-top: 30px;

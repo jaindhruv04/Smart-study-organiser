@@ -6,9 +6,8 @@ body {
   overflow: hidden;
 }
 
-/* Sidebar */
 .sidebar {
-  background-color: #5f4b8b; /* Bluish-Purple */
+  background-color: #5f4b8b;
   color: white;
   width: 250px;
   display: flex;
@@ -23,7 +22,7 @@ body {
 }
 
 .sidebar button {
-  background-color: #4b3c7d; /* Darker Bluish-Purple */
+  background-color: #4b3c7d; 
   color: white;
   border: none;
   padding: 10px;
@@ -34,7 +33,7 @@ body {
 }
 
 .sidebar button:hover {
-  background-color: #3a2d5f; /* Even Darker */
+  background-color: #3a2d5f;
 }
 
 .note-list {
@@ -44,7 +43,7 @@ body {
 }
 
 .note-item {
-  background-color: #7e6bc8; /* Lighter Bluish-Purple */
+  background-color: #7e6bc8;
   margin: 5px 0;
   padding: 10px;
   border-radius: 5px;
@@ -55,12 +54,11 @@ body {
 }
 
 .note-item:hover {
-  background-color: #6a58a4; /* Slightly Darker */
+  background-color: #6a58a4; 
 }
 
-/* Delete Button */
 .delete-btn {
-  background-color: #8b0000; /* Dark Red */
+  background-color: #8b0000;
   color: white;
   border: none;
   padding: 5px 10px;
@@ -70,10 +68,9 @@ body {
 }
 
 .delete-btn:hover {
-  background-color: #660000; /* Even Darker Red */
+  background-color: #660000; 
 }
 
-/* Main Content */
 .main {
   flex: 1;
   display: flex;
@@ -106,7 +103,7 @@ body {
 
 /* Save Button */
 .save-btn {
-  background-color: #28a745; /* Green */
+  background-color: #28a745; 
   color: white;
   padding: 8px 15px;
   border: none;
@@ -114,16 +111,15 @@ body {
   border-radius: 5px;
   font-size: 14px;
   position: absolute;
-  top: 50px; /* Adjusted to be below the title box */
+  top: 50px; 
   right: 20px;
-  width: 100px; /* Smaller width */
+  width: 100px; 
 }
 
 .save-btn:hover {
-  background-color: #218838; /* Darker Green */
+  background-color: #218838; 
 }
 
-/* Saved Files Modal */
 .saved-files-modal {
   position: fixed;
   top: 0;
