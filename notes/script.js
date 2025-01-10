@@ -7,8 +7,9 @@ const savedFilesModal = document.getElementById("savedFilesModal");
 const savedNoteList = document.getElementById("savedNoteList");
 const closeModalBtn = document.getElementById("closeModalBtn");
 const saveNoteButton = document.getElementById("saveNoteButton");
+const uploadNoteButton = document.getElementById("uploadNoteButton");
+const noteFileInput = document.getElementById("noteFileInput");
 
-// Load notes from localStorage or initialize empty array
 let notes = JSON.parse(localStorage.getItem("notes")) || [];
 let currentNoteIndex = null;
 
@@ -19,12 +20,11 @@ function renderNotes() {
     noteItem.className = "note-item";
     noteItem.textContent = note.title || "Untitled Note";
 
-    // Add delete button to each note item
     const deleteButton = document.createElement("button");
     deleteButton.className = "delete-btn";
     deleteButton.textContent = "Delete";
     deleteButton.onclick = (event) => {
-      event.stopPropagation(); // Prevent clicking the note from opening it
+      event.stopPropagation();
       deleteNote(index);
     };
 
@@ -47,18 +47,16 @@ function saveCurrentNote() {
       title: noteTitle.value,
       content: noteContent.value,
     };
-    // Save notes to localStorage
     localStorage.setItem("notes", JSON.stringify(notes));
   }
 }
 
 function deleteNote(index) {
-  notes.splice(index, 1); // Remove the note from the array
-  localStorage.setItem("notes", JSON.stringify(notes)); // Save updated list to localStorage
-  renderNotes(); // Re-render the list
+  notes.splice(index, 1);
+  localStorage.setItem("notes", JSON.stringify(notes));
+  renderNotes();
 }
 
-// Add a new note
 newNoteButton.onclick = () => {
   saveCurrentNote();
   notes.push({ title: "", content: "" });
@@ -67,18 +65,35 @@ newNoteButton.onclick = () => {
   renderNotes();
 };
 
-// Show the saved notes modal
+uploadNoteButton.onclick = () => {
+  noteFileInput.click();
+};
+
+noteFileInput.onchange = (event) => {
+  const file = event.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const fileContent = e.target.result;
+      saveCurrentNote(); // Save current note before uploading
+      notes.push({ title: file.name, content: fileContent });
+      currentNoteIndex = notes.length - 1;
+      loadNote(currentNoteIndex);
+      renderNotes();
+    };
+    reader.readAsText(file);
+  }
+};
+
 savedFilesButton.onclick = () => {
   renderSavedFiles();
   savedFilesModal.style.display = "flex";
 };
 
-// Close the saved files modal
 closeModalBtn.onclick = () => {
   savedFilesModal.style.display = "none";
 };
 
-// Render saved notes in the modal
 function renderSavedFiles() {
   savedNoteList.innerHTML = "";
   notes.forEach((note, index) => {
@@ -90,16 +105,13 @@ function renderSavedFiles() {
   });
 }
 
-// Save the current note when the "Save Note" button is clicked
 saveNoteButton.onclick = () => {
   saveCurrentNote();
   alert("Note Saved!");
-  renderNotes(); // Re-render the list of notes after saving
+  renderNotes();
 };
 
-// Update the notes in localStorage on input
 noteTitle.oninput = saveCurrentNote;
 noteContent.oninput = saveCurrentNote;
 
-// Initial render of the notes
 renderNotes();
