@@ -3,42 +3,44 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Simple Note-Taking App</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css">
+    <title>Note App</title>
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <div class="sidebar">
-      <h1>Notes</h1>
-      <button id="newNoteButton">+ New Note</button>
-      <button id="uploadNoteButton">Upload Note</button>
-      <input type="file" id="noteFileInput" style="display: none" />
-      <button id="savedFilesButton">Saved Files</button>
-      <div class="note-list" id="noteList"></div>
-    </div>
-
-    <div class="main">
-      <div class="main-header">
-        <input type="text" id="noteTitle" placeholder="Title..." />
-      </div>
-      <textarea
-        id="noteContent"
-        class="editor"
-        placeholder="Write your note here..."
-      ></textarea>
-      <button class="save-btn" id="saveNoteButton">Save Note</button>
-    </div>
-
-    <div class="saved-files-modal" id="savedFilesModal">
-      <div class="modal-content">
+    <div class="container">
+      <div class="sidebar">
         <h2>Saved Notes</h2>
-        <div class="note-list" id="savedNoteList"></div>
-        <button class="close-btn" id="closeModalBtn">Close</button>
+        <ul id="savedNotesList"></ul>
+      </div>
+
+      <div class="main-content">
+        <div class="note-editor">
+          <h1>Edit Note</h1>
+          <input
+            type="text"
+            id="noteTitle"
+            placeholder="Enter title of the note"
+            class="note-title"
+          />
+          <textarea
+            id="noteContent"
+            placeholder="Write your note here"
+            class="note-content"
+          ></textarea>
+          <input
+            type="file"
+            id="uploadFile"
+            accept=".txt"
+            class="upload-file"
+          />
+          <div class="file-info">
+            <span id="uploadedFileName">No file selected</span>
+          </div>
+          <button id="saveNoteButton">Save Note</button>
+        </div>
       </div>
     </div>
+
     <script src="script.js"></script>
   </body>
 </html>

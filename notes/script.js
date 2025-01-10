@@ -1,127 +1,41 @@
-const noteList = document.getElementById("noteList");
-const noteTitle = document.getElementById("noteTitle");
-const noteContent = document.getElementById("noteContent");
-const newNoteButton = document.getElementById("newNoteButton");
-const savedFilesButton = document.getElementById("savedFilesButton");
-const savedFilesModal = document.getElementById("savedFilesModal");
-const savedNoteList = document.getElementById("savedNoteList");
-const closeModalBtn = document.getElementById("closeModalBtn");
-const saveNoteButton = document.getElementById("saveNoteButton");
-const uploadNoteButton = document.getElementById("uploadNoteButton");
-const noteFileInput = document.getElementById("noteFileInput");
+document.querySelector("#uploadFile").addEventListener("change", handleFileUpload);
 
-let notes = JSON.parse(localStorage.getItem("notes")) || [];
-let currentNoteIndex = null;
-
-function renderNotes() {
-  console.log('Rendering notes:', notes); // Debugging log
-  noteList.innerHTML = "";
-  notes.forEach((note, index) => {
-    const noteItem = document.createElement("div");
-    noteItem.className = "note-item";
-    noteItem.textContent = note.title || "Untitled Note";
-
-    const deleteButton = document.createElement("button");
-    deleteButton.className = "delete-btn";
-    deleteButton.textContent = "Delete";
-    deleteButton.onclick = (event) => {
-      event.stopPropagation();
-      deleteNote(index);
-    };
-
-    noteItem.appendChild(deleteButton);
-    noteItem.onclick = () => loadNote(index);
-    noteList.appendChild(noteItem);
-  });
-}
-
-function loadNote(index) {
-  currentNoteIndex = index;
-  const note = notes[index];
-  noteTitle.value = note.title;
-  noteContent.value = note.content;
-  console.log('Loaded note:', note); // Debugging log
-}
-
-function saveCurrentNote() {
-  if (currentNoteIndex !== null) {
-    notes[currentNoteIndex] = {
-      title: noteTitle.value,
-      content: noteContent.value,
-    };
-    localStorage.setItem("notes", JSON.stringify(notes));
-    console.log('Note saved:', notes[currentNoteIndex]); // Debugging log
-  }
-}
-
-function deleteNote(index) {
-  notes.splice(index, 1);
-  localStorage.setItem("notes", JSON.stringify(notes));
-  renderNotes();
-}
-
-newNoteButton.onclick = (event) => {
-  event.preventDefault();  // Prevent default behavior
-  noteTitle.value = "";
-  noteContent.value = "";
-  currentNoteIndex = null; // New note
-  console.log('Creating new note'); // Debugging log
-  renderNotes();
-};
-
-uploadNoteButton.onclick = (event) => {
-  event.preventDefault();  // Prevent default behavior
-  noteFileInput.click(); // Trigger file selection
-};
-
-noteFileInput.onchange = (event) => {
+function handleFileUpload(event) {
   const file = event.target.files[0];
+
   if (file) {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const fileContent = e.target.result;
-      notes.push({ title: file.name, content: fileContent });
-      currentNoteIndex = notes.length - 1;
-      loadNote(currentNoteIndex);
-      renderNotes();
-      console.log('File uploaded:', file.name); // Debugging log
-    };
-    reader.readAsText(file);
+    document.querySelector("#uploadedFileName").textContent = file.name;
+
+    document.querySelector("#noteTitle").value = "";
+    document.querySelector("#noteContent").value = "";
+
+    if (file.type === "text/plain" || file.name.endsWith(".cpp")) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const fileContent = e.target.result;
+        const lines = fileContent.split("\n");
+
+        document.querySelector("#noteTitle").value = lines[0];
+
+        document.querySelector("#noteContent").value = lines.slice(1).join("\n");
+      };
+      reader.readAsText(file);
+    }
+    else if (file.type.startsWith("image/")) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const imagePreview = document.createElement("img");
+        imagePreview.src = e.target.result;
+        imagePreview.style.maxWidth = "300px";
+        document.querySelector("#noteContent").value = ""; 
+        document.querySelector("#noteContent").appendChild(imagePreview);
+      };
+      reader.readAsDataURL(file);
+    }
+    else if (file.type === "application/pdf") {
+      document.querySelector("#noteContent").value = "PDF file uploaded!";
+    } else {
+      document.querySelector("#noteContent").value = "Unsupported file type!";
+    }
   }
-};
-
-savedFilesButton.onclick = (event) => {
-  event.preventDefault();  // Prevent default behavior
-  renderSavedFiles();
-  savedFilesModal.style.display = "flex";
-  console.log('Saved files button clicked'); // Debugging log
-};
-
-closeModalBtn.onclick = (event) => {
-  event.preventDefault();  // Prevent default behavior
-  savedFilesModal.style.display = "none";
-};
-
-function renderSavedFiles() {
-  savedNoteList.innerHTML = "";
-  notes.forEach((note, index) => {
-    const savedNoteItem = document.createElement("div");
-    savedNoteItem.className = "note-item";
-    savedNoteItem.textContent = note.title || "Untitled Note";
-    savedNoteItem.onclick = () => loadNote(index);
-    savedNoteList.appendChild(savedNoteItem);
-  });
 }
-
-saveNoteButton.onclick = (event) => {
-  event.preventDefault();  // Prevent default behavior
-  saveCurrentNote();
-  alert("Note Saved!");
-  renderNotes();
-  console.log('Save note button clicked'); // Debugging log
-};
-
-noteTitle.oninput = saveCurrentNote;
-noteContent.oninput = saveCurrentNote;
-
-renderNotes(); // Initial rendering

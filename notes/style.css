@@ -1,170 +1,135 @@
 body {
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  padding: 0;
+  font-family: Arial, sans-serif;
   display: flex;
+  min-height: 100vh;
+  background: #f0f4f7;
+}
+
+.container {
+  display: flex;
+  width: 100%;
   height: 100vh;
-  overflow: hidden;
 }
 
 .sidebar {
-  background-color: #5f4b8b;
-  color: white;
-  width: 250px;
-  display: flex;
-  flex-direction: column;
+  width: 20%;
+  background-color: #2c3e50;
   padding: 20px;
+  color: white;
   box-sizing: border-box;
+  position: relative;
+  overflow-y: auto;
 }
 
-.sidebar h1 {
-  font-size: 24px;
+.sidebar h2 {
+  font-size: 1.5rem;
   margin-bottom: 20px;
 }
 
-.sidebar button {
-  background-color: #4b3c7d; 
-  color: white;
-  border: none;
-  padding: 10px;
-  margin: 10px 0;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 14px;
-}
-
-.sidebar button:hover {
-  background-color: #3a2d5f;
-}
-
-.note-list {
-  margin-top: 20px;
-  flex: 1;
-  overflow-y: auto;
+#savedNotesList {
+  list-style: none;
+  padding: 0;
 }
 
 .note-item {
-  background-color: #7e6bc8;
-  margin: 5px 0;
+  background: #34495e;
   padding: 10px;
+  margin-bottom: 10px;
   border-radius: 5px;
   cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  transition: background 0.3s;
 }
 
 .note-item:hover {
-  background-color: #6a58a4; 
+  background: #1abc9c;
 }
 
-.delete-btn {
-  background-color: #8b0000;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 12px;
+.note-item h3 {
+  margin: 0;
 }
 
-.delete-btn:hover {
-  background-color: #660000; 
-}
-
-.main {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
-.main-header {
-  background-color: #f4f4f4;
-  padding: 10px 20px;
-  border-bottom: 1px solid #ddd;
-}
-
-.main-header input {
-  width: 100%;
-  font-size: 18px;
-  border: none;
-  outline: none;
-}
-
-.editor {
-  flex: 1;
+.main-content {
+  width: 80%;
   padding: 20px;
-  font-size: 16px;
-  outline: none;
-  border: none;
-  resize: none;
   box-sizing: border-box;
 }
 
-/* Save Button */
-.save-btn {
-  background-color: #28a745; 
-  color: white;
-  padding: 8px 15px;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 14px;
-  position: absolute;
-  top: 50px; 
-  right: 20px;
-  width: 100px; 
-}
-
-.save-btn:hover {
-  background-color: #218838; 
-}
-
-.saved-files-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-
-.saved-files-modal .modal-content {
+.note-editor {
   background-color: white;
   padding: 20px;
-  border-radius: 10px;
-  width: 60%;
-  max-height: 80%;
-  overflow-y: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.saved-files-modal .modal-content h2 {
-  margin-top: 0;
-}
-
-.saved-files-modal .note-item {
-  background-color: #f4f4f4;
-  margin: 5px 0;
+.note-title {
+  width: 100%;
+  height: 50px;
+  font-size: 1.5rem;
   padding: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  border: 1px solid #ddd;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
 }
 
-.saved-files-modal .note-item:hover {
-  background-color: #ddd;
+.note-content {
+  width: 100%;
+  height: 300px;
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  resize: none;
 }
 
-.close-btn {
-  background-color: red;
+.upload-file {
+  margin-bottom: 10px;
+}
+
+.file-info {
+  font-size: 1rem;
+  color: #7f8c8d;
+}
+
+#saveNoteButton {
+  background-color: #1abc9c;
   color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
+  font-size: 1rem;
+  padding: 10px 20px;
   border-radius: 5px;
-  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#saveNoteButton:hover {
+  background-color: #16a085;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: 300px;
+  }
+
+  .main-content {
+    width: 100%;
+  }
+
+  .note-title {
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  .note-content {
+    height: 250px;
+    font-size: 1rem;
+  }
 }
