@@ -1,4 +1,3 @@
-// Navigation links
 document.getElementById("home-link").onclick = function () {
   window.location.reload();
 };
@@ -6,3 +5,12 @@ document.getElementById("home-link").onclick = function () {
 document.getElementById("contact-link").onclick = function () {
   alert("Contact us at: squidnotes@gmail.com");
 };
+
+document
+  .getElementById("features-link")
+  .addEventListener("click", function (event) {
+    event.preventDefault(); // Prevent the default anchor behavior
+    document
+      .getElementById("features-section")
+      .scrollIntoView({ behavior: "smooth" });
+  });
