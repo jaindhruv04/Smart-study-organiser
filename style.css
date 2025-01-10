@@ -46,12 +46,13 @@ header nav a:hover {
 .hero-section {
   text-align: center;
   padding: 100px 20px;
-  background: url('https://variety.com/wp-content/uploads/2024/08/Squid-Game-Unleashed-video-game.jpeg') no-repeat center center/cover;
+  background: url("https://variety.com/wp-content/uploads/2024/08/Squid-Game-Unleashed-video-game.jpeg")
+    no-repeat center center/cover;
   position: relative;
 }
 
 .hero-section::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -199,4 +200,39 @@ footer .footer-quote {
   height: 100%;
   overflow: hidden;
   z-index: -1;
+}
+
+.contact-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 30px 50px;
+  background-color: #2c5364;
+  color: #f4f4f4;
+}
+
+.contact-column {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.contact-column h4 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #71dbac;
+}
+
+.contact-column p {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: #f4f4f4;
+}
+
+.contact-column a {
+  color: #71dbac;
+  text-decoration: none;
+}
+
+.contact-column a:hover {
+  text-decoration: underline;
 }
