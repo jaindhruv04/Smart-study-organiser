@@ -9,7 +9,7 @@ document.getElementById("contact-link").onclick = function () {
 document
   .getElementById("features-link")
   .addEventListener("click", function (event) {
-    event.preventDefault(); // Prevent the default anchor behavior
+    event.preventDefault();
     document
       .getElementById("features-section")
       .scrollIntoView({ behavior: "smooth" });
